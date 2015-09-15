@@ -84,6 +84,7 @@ public class WSConsumerTest {
     public void getClassNamesShouldFindFooClassPlaceHolder() throws Exception {
 	WSConsumer importer = newConsumer();
 	URL url = Thread.currentThread().getContextClassLoader().getResource("./placeHolderClasses/");
+		System.out.println("## WSConsumerTest url: " + url.getFile());  // rls debug
 	File file = new File(url.getFile());
 	List<String> list = importer.getClassNames(file);
 	assertThat(list.size(), is(1));
