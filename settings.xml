@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+ 
+  
+  <pluginGroups>
+    <pluginGroup>org.jboss.maven.plugins</pluginGroup>
+    <pluginGroup>org.jboss.ws.plugins</pluginGroup>
+  </pluginGroups>
+
+  <profiles>
+    <!-- jboss repository profile -->
+    <profile>
+      <id>jboss.repository</id>
+      <activation>
+        <property>
+          <name>!jboss.repository.off</name>
+        </property>
+      </activation>
+      <repositories>
+
+	<!-- Redefine the Maven central repository to enable snapshots.  The url will be replaced by the mirror -->
+        <repository>
+          <id>central</id>
+          <name>Central repository proxy</name>
+          <url>http://central</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </snapshots>
+        </repository>
+
+      </repositories>
+      <pluginRepositories>
+	<!-- Redefine the Maven central repository to enable snapshots.  The url will be replaced by the mirror -->
+        <pluginRepository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+    <!-- user profile -->
+    <profile>
+      <id>user-profile</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+      </properties>
+    </profile>
+  </profiles>
+
+    <!-- Configure the JBoss EAP Maven repository -->
+    <!-- ######### rls original ############# 
+    <profile>
+      <id>jboss-eap-6.2.0.GA-maven-repository</id>
+      <repositories>     
+        <repository>
+          <id>jboss-eap-6.2.0.GA-maven-repository</id>
+          <url>file:///home/rsearls/.m2/jboss-eap-6.2.0.GA-maven-repository</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>       
+      </repositories>
+      
+      <pluginRepositories>
+        <pluginRepository>
+          <id>jboss-eap-6.2.0.GA-maven-repository</id>
+          <url>file:///home/rsearls/.m2/jboss-eap-6.2.0.GA-maven-repository</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+    
+    
+    <profile>
+      <id>jboss-eap-6.1.1.GA-maven-repository</id>
+      <repositories>     
+        <repository>
+          <id>jboss-eap-6.1.1.GA-maven-repository</id>
+          <url>file:///home/rsearls/.m2/jboss-eap-6.1.1.GA-maven-repository</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>       
+      </repositories>
+      
+      <pluginRepositories>
+        <pluginRepository>
+          <id>jboss-eap-6.1.1.GA-maven-repository</id>
+          <url>file:///home/rsearls/.m2/jboss-eap-6.1.1.GA-maven-repository</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+######### rls original ############# -->
+    <!-- Configure the JBoss Community Maven repository -->
+ <!--    ########## rls original ################
+    <profile>
+      <id>jboss-community-repository</id>
+      <repositories>
+        <repository>
+          <id>jboss-community-repository</id>
+          <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy> 
+          </releases>
+          <snapshots>
+            <enabled>true</enabled> 
+            <updatePolicy>daily</updatePolicy>  
+          </snapshots>
+        </repository>
+
+        <repository>
+          <id>https-jboss-community-repository-snapshot</id>
+          <url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy> 
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>daily</updatePolicy>  
+          </snapshots>
+        </repository>
+
+
+        <repository>
+            <id>jboss-mead-eap5</id>
+            <name>JBoss MEAD Repository</name>
+            <layout>default</layout>
+            <url>http://download.lab.bos.redhat.com/brewroot/repos/jb-eap-5-rhel-6-build/latest/maven/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+          <repository>
+              <id>redhat-techpreview-all-repository</id>
+              <url>http://maven.repository.redhat.com/techpreview/all/</url>
+              <releases>
+                  <enabled>true</enabled>
+              </releases>
+              <snapshots>
+                  <enabled>false</enabled>
+              </snapshots>
+          </repository>
+
+         <repository>
+            <id>jboss-plugin-archetypes</id>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+            <releases>
+               <enabled>true</enabled>
+            </releases>
+            <snapshots>
+               <enabled>false</enabled>
+            </snapshots>
+         </repository>
+
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>jboss-community-plugin-repository</id>
+          <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>daily</updatePolicy>
+          </snapshots>
+        </pluginRepository>
+        
+      </pluginRepositories>
+    </profile>
+  ########## rls original ################ -->
+
+
+<servers>
+    <!-- to use 'mvn clean deploy' to put archvives in nexus -->
+    <server>
+      <id>nexus</id>
+      <username>rsearls</username>
+      <password>!jboss10</password>
+    </server>
+    
+    <!-- added from Alessio start -->
+    <server>
+      <id>jboss-developer-repository-group</id>
+      <username>rsearls</username>
+      <password>!jboss10</password>
+    </server>
+   <server>
+     <id>jboss-snapshots-repository</id>
+     <username>rsearls</username>
+     <password>!jboss10</password>
+   </server>
+   <server>
+     <id>jboss-releases-repository</id>
+     <username>rsearls</username>
+     <password>!jboss10</password>
+   </server>
+   <server>
+     <id>jboss-staging</id>
+     <username>rsearls</username>
+     <password>!jboss10</password>
+   </server>
+    <!-- added from Alessio end -->
+  </servers>
+  
+   
+  <mirrors>
+    <mirror>
+      <id>jboss-developer-repository-group</id>
+      <mirrorOf>*,!jboss-deprecated,!eap6.jboss.org,!jboss-mead-eap5</mirrorOf>
+      <name>JBoss.org Developer Repository Group</name>
+      <url>https://repository.jboss.org/nexus/content/groups/developer/</url>
+   </mirror>
+  </mirrors>
+ 
+
+    <!-- Optionally, make the repositories active by default -->
+<!-- #####    
+  <activeProfiles>
+    <activeProfile>jboss-eap-6.2.0.GA-maven-repository</activeProfile>
+    <activeProfile>jboss-eap-6.1.1.GA-maven-repository</activeProfile>
+    
+    <activeProfile>jboss-community-repository</activeProfile>
+   
+  </activeProfiles>
+####### -->
+</settings>
+
